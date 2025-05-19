@@ -3,6 +3,15 @@ import { languages } from "./languages"
 
 export default function Hangman() {
 
+    const [currentWord, setCurrentWord] = React.useState("react");
+
+   
+   const letterElements = currentWord.split("").map(function(letter, index){
+    return <span key={index}>{letter.toUpperCase()}</span> 
+   })
+
+   console.log(letterElements)
+
     const languageElements = languages.map(function(language){
         const styles = {
             backgroundColor: language.backgroundColor,
@@ -26,9 +35,12 @@ export default function Hangman() {
                 <h3>You win!</h3>
                 <p>Well done! 🎉</p>
             </section>
-            <div className="languages">
+            <section className="languages">
                 {languageElements}
-            </div>
+            </section>
+            <section className="word">
+                {letterElements}
+            </section>
         </main>
     )
 }
