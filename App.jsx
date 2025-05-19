@@ -1,6 +1,20 @@
 import React from "react"
+import { languages } from "./languages"
 
 export default function Hangman() {
+
+    const languageElements = languages.map(function(language){
+        const styles = {
+            backgroundColor: language.backgroundColor,
+            color: language.color
+        }
+
+        return (
+            <span key={language.name} style={styles}>{language.name}</span>
+        )
+    });
+
+
     return (
         <main>
            <header>
@@ -12,6 +26,9 @@ export default function Hangman() {
                 <h3>You win!</h3>
                 <p>Well done! 🎉</p>
             </section>
+            <div className="languages">
+                {languageElements}
+            </div>
         </main>
     )
 }

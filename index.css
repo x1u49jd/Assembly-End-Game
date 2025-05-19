@@ -37,6 +37,7 @@ header > p {
     justify-content: center;
     padding: 15px;
     border-radius: 5px;
+    margin: 20px;
 }
 
 .status > h3 {
@@ -46,4 +47,17 @@ header > p {
 .status > p {
     margin: 0;
     size: 16px;
+}
+
+.languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    justify-content: center;
+    max-width: 350px;
+}
+
+.languages > span {
+    padding: 5px;
+    border-radius: 5px;
 }
