@@ -5,12 +5,13 @@ export default function Hangman() {
 
     const [currentWord, setCurrentWord] = React.useState("react");
 
-   
+    const alphabet = "abcdefghijklmnopqrstuvwxyz"
+
+  
+
    const letterElements = currentWord.split("").map(function(letter, index){
     return <span key={index}>{letter.toUpperCase()}</span> 
    })
-
-   console.log(letterElements)
 
     const languageElements = languages.map(function(language){
         const styles = {
@@ -22,6 +23,10 @@ export default function Hangman() {
             <span key={language.name} style={styles}>{language.name}</span>
         )
     });
+
+    const keyboardElements = alphabet.split("").map(function(letter){
+        return <button key={letter}>{letter.toUpperCase()}</button>
+    })
 
 
     return (
@@ -41,6 +46,10 @@ export default function Hangman() {
             <section className="word">
                 {letterElements}
             </section>
+            <section className="keyboard">
+                {keyboardElements}
+            </section>
+            <button className="newGame">New Game</button>
         </main>
     )
 }
