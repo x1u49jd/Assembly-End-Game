@@ -2,11 +2,16 @@ import React from "react"
 import { languages } from "./languages"
 
 export default function Hangman() {
-
+    // State values
     const [currentWord, setCurrentWord] = React.useState("react");
-
     const [guessedLetters, setGuessedLetters] = React.useState([]);
+    
+    // Derived values
+    const wrongGuessCount = guessedLetters.filter(function(letter){return !currentWord.includes(letter)}).length;
+    console.log("Wrong: " + wrongGuessCount)
+  
 
+    // Static values
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
    function addGuessedLetter(letter) {
