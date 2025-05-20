@@ -33,7 +33,19 @@ export default function Hangman() {
     });
 
     const keyboardElements = alphabet.split("").map(function(letter){
-        return <button onClick={function(){addGuessedLetter(letter)}} key={letter}>{letter.toUpperCase()}</button>
+
+        const isGuessed = guessedLetters.includes(letter)
+        const isCorrect = isGuessed && currentWord.includes(letter)
+        const isWrong = isGuessed && !currentWord.includes(letter)
+
+        return ( 
+            <button 
+            className={isCorrect ? "correct" : isWrong ? "wrong" : "" }
+            onClick={function(){addGuessedLetter(letter)}}
+            key={letter}
+            >
+            {letter.toUpperCase()}
+            </button> )
     })
 
 
