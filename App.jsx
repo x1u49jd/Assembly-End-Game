@@ -5,9 +5,17 @@ export default function Hangman() {
 
     const [currentWord, setCurrentWord] = React.useState("react");
 
+    const [guessedLetters, setGuessedLetters] = React.useState([]);
+
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
 
-  
+   function addGuessedLetter(letter) {
+    setGuessedLetters(function(prev) {
+        return prev.includes(letter) ? prev : [...prev, letter]
+    });
+    console.log(guessedLetters);
+}
+
 
    const letterElements = currentWord.split("").map(function(letter, index){
     return <span key={index}>{letter.toUpperCase()}</span> 
@@ -25,7 +33,7 @@ export default function Hangman() {
     });
 
     const keyboardElements = alphabet.split("").map(function(letter){
-        return <button key={letter}>{letter.toUpperCase()}</button>
+        return <button onClick={function(){addGuessedLetter(letter)}} key={letter}>{letter.toUpperCase()}</button>
     })
 
 
