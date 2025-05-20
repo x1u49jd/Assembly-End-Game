@@ -17,8 +17,8 @@ export default function Hangman() {
 }
 
 
-   const letterElements = currentWord.split("").map(function(letter, index){
-    return <span key={index}>{letter.toUpperCase()}</span> 
+   const letterElements = currentWord.split("").map(function(letter, index) {
+    return <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span> 
    })
 
     const languageElements = languages.map(function(language){
@@ -40,7 +40,7 @@ export default function Hangman() {
 
         return ( 
             <button 
-            className={isCorrect ? "correct" : isWrong ? "wrong" : "" }
+            className={isCorrect ? "correct" : isWrong ? "wrong" : ""}
             onClick={function(){addGuessedLetter(letter)}}
             key={letter}
             >
