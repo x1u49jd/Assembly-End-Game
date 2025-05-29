@@ -26,14 +26,20 @@ export default function Hangman() {
     return <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span> 
    })
 
-    const languageElements = languages.map(function(language){
+    const languageElements = languages.map(function(language, index){
+
+        const isLanguageLost = index < wrongGuessCount;
+
         const styles = {
             backgroundColor: language.backgroundColor,
             color: language.color
         }
 
         return (
-            <span key={language.name} style={styles}>{language.name}</span>
+            <span 
+            className={isLanguageLost ? "lost" : ""}
+            key={language.name} style={styles}>{language.name}
+            </span>
         )
     });
 
