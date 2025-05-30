@@ -9,7 +9,12 @@ export default function Hangman() {
     // Derived values
     const wrongGuessCount = guessedLetters.filter(function(letter){return !currentWord.includes(letter)}).length;
     console.log("Wrong: " + wrongGuessCount)
-  
+    
+    const isGameWon = currentWord.split("").every(function(letter){return guessedLetters.includes(letter)})
+
+    const isGameLost = wrongGuessCount >= languages.length - 1 ? true : false;
+    
+    const isGameOver = isGameWon || isGameLost
 
     // Static values
     const alphabet = "abcdefghijklmnopqrstuvwxyz"
@@ -80,7 +85,7 @@ export default function Hangman() {
             <section className="keyboard">
                 {keyboardElements}
             </section>
-            <button className="newGame">New Game</button>
+            {isGameOver && <button className="newGame">New Game</button>}
         </main>
     )
 }
