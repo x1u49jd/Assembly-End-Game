@@ -72,10 +72,26 @@ export default function Hangman() {
                 <p>Guess the word within 8 attempts to keep the 
                 programming world safe from Assembly!</p>
             </header>
-            <section className="status">
-                <h3>You win!</h3>
-                <p>Well done! 🎉</p>
+            <section className={isGameWon ? "status won" : isGameOver ? "status lost" : "status"}>
+                {isGameWon ? (
+                    <>
+                    <h3>You Win!</h3>
+                    <p>Well done! 🎉</p>
+                    </>
+                    ) :
+                isGameLost ? (
+                    <>
+                    <h3>Game Over!</h3>
+                    <p>You lose! Better start learning Assembly 😭</p>
+                    </>
+                    ) : (
+                    <>
+                    <h3>Sample Text</h3>
+                    <p>Sample Text</p>
+                    </>
+                )}
             </section>
+
             <section className="languages">
                 {languageElements}
             </section>

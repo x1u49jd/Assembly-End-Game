@@ -30,14 +30,22 @@ header > p {
 }
 
 .status {
-    background-color: rgba(16, 169, 91, 1);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     margin: 20px;
     border-radius: 5px;
+    visibility:hidden;
+}
 
+.status.won {
+    background-color: rgba(16, 169, 91, 1);
+    visibility:visible;
+}
+.status.lost {
+    background-color: rgb(169, 36, 16);
+    visibility:visible;
 }
 
 .status > h3 {
