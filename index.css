@@ -36,16 +36,20 @@ header > p {
     justify-content: center;
     margin: 20px;
     border-radius: 5px;
-    visibility:hidden;
 }
 
 .status.won {
     background-color: rgba(16, 169, 91, 1);
-    visibility:visible;
 }
 .status.lost {
     background-color: rgb(169, 36, 16);
-    visibility:visible;
+}
+
+.status.farewell-message {
+    background-color: #7A5EA7;
+    border: 1px dashed #323232;
+    font-style: italic;
+    font-weight: 400;
 }
 
 .status > h3 {

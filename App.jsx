@@ -1,5 +1,6 @@
 import React from "react"
 import { languages } from "./languages"
+import { getFarewellText } from "./utils"
 
 export default function Hangman() {
     // State values
@@ -8,12 +9,8 @@ export default function Hangman() {
     
     // Derived values
     const wrongGuessCount = guessedLetters.filter(function(letter){return !currentWord.includes(letter)}).length;
-    console.log("Wrong: " + wrongGuessCount)
-    
     const isGameWon = currentWord.split("").every(function(letter){return guessedLetters.includes(letter)})
-
     const isGameLost = wrongGuessCount >= languages.length - 1 ? true : false;
-    
     const isGameOver = isGameWon || isGameLost
 
     // Static values
@@ -72,24 +69,25 @@ export default function Hangman() {
                 <p>Guess the word within 8 attempts to keep the 
                 programming world safe from Assembly!</p>
             </header>
-            <section className={isGameWon ? "status won" : isGameOver ? "status lost" : "status"}>
-                {isGameWon ? (
+            <section className={!isGameOver ? "status" : isGameWon ? "status won" : isGameLost ? "status lost" : ""}>
+                 {!isGameOver ? (
                     <>
-                    <h3>You Win!</h3>
-                    <p>Well done! 🎉</p>
+                      <h3>Keep going!</h3>
+                      <p>The game is still ongoing. Good luck!</p>
                     </>
-                    ) :
-                isGameLost ? (
+                  ) : isGameWon ? (
                     <>
-                    <h3>Game Over!</h3>
-                    <p>You lose! Better start learning Assembly 😭</p>
+                      <h3>You Win!</h3>
+                      <p>Well done! 🎉</p>
                     </>
-                    ) : (
+                  ) : isGameLost ? (
                     <>
-                    <h3>Sample Text</h3>
-                    <p>Sample Text</p>
+                      <h3>Game Over!</h3>
+                      <p>You lose! Better start learning Assembly 😭</p>
                     </>
-                )}
+                  ) : (
+                    null
+                  )}
             </section>
 
             <section className="languages">
