@@ -24,7 +24,7 @@ export default function Hangman() {
     setGuessedLetters(function(prev) {
       return prev.includes(letter) ? prev : [...prev, letter]
     });
-    //console.log(guessedLetters);
+    console.log(guessedLetters);
   }
   
   // Displays already guessed letters of the word; blanks out the rest
@@ -66,7 +66,12 @@ export default function Hangman() {
     {letter.toUpperCase()}
     </button> )
   })
-  
+
+  function startNewGame() {
+    setCurrentWord(getRandomWord())
+    setGuessedLetters([])
+  }
+
   return (
   <main>
       <header>
@@ -106,7 +111,7 @@ export default function Hangman() {
       <section className="keyboard">
           {keyboardElements}
       </section>
-      {isGameOver && <button className="newGame">New Game</button>}
+      {isGameOver && <button className="newGame" onClick={startNewGame}>New Game</button>}
   </main>
   )
 }
