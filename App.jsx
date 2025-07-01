@@ -1,6 +1,7 @@
 import React from "react"
 import { languages } from "./languages"
 import { getFarewellText, getRandomWord  } from "./utils"
+import Confetti from "react-confetti"
 
 export default function Hangman() {
   // State values
@@ -74,6 +75,7 @@ export default function Hangman() {
 
   return (
   <main>
+      {isGameWon && <Confetti />}
       <header>
           <h1>Assembly: Endgame</h1>
           <p>Guess the word within 8 attempts to keep the 
