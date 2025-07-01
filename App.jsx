@@ -59,6 +59,7 @@ export default function Hangman() {
     return ( 
     <button 
     className={isCorrect ? "correct" : isWrong ? "wrong" : ""}
+    disabled={isGameOver}
     onClick={function(){addGuessedLetter(letter)}}
     key={letter}
     >
