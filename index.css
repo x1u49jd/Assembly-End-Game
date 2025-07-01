@@ -45,11 +45,8 @@ header > p {
     background-color: rgb(169, 36, 16);
 }
 
-.status.farewell-message {
+.status.farewell {
     background-color: #7A5EA7;
-    border: 1px dashed #323232;
-    font-style: italic;
-    font-weight: 400;
 }
 
 .status > h3 {

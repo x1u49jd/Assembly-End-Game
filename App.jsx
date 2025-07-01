@@ -13,6 +13,10 @@ export default function Hangman() {
   const isGameLost = wrongGuessCount >= languages.length - 1 ? true : false;
   const isGameOver = isGameWon || isGameLost
 
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+  const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter)
+  console.log(isLastGuessIncorrect)
+
   // Static values
   const alphabet = "abcdefghijklmnopqrstuvwxyz"
   
@@ -20,7 +24,7 @@ export default function Hangman() {
     setGuessedLetters(function(prev) {
       return prev.includes(letter) ? prev : [...prev, letter]
     });
-    console.log(guessedLetters);
+    //console.log(guessedLetters);
   }
   
   // Displays already guessed letters of the word; blanks out the rest
@@ -71,13 +75,9 @@ export default function Hangman() {
       </header>
 
       {/* Sets the game status (won, lost, or in progress) and applies the corresponding CSS style */}
-      <section className={!isGameOver ? "status" : isGameWon ? "status won" : isGameLost ? "status lost" : ""}>
-            {!isGameOver ? (
-              <>
-                <h3>Keep going!</h3>
-                <p>The game is still ongoing. Good luck!</p>
-              </>
-            ) : isGameWon ? (
+      
+      <section className={`status ${isGameWon ? "won": isGameLost ? "lost": isLastGuessIncorrect ? "farewell": ""}`}>
+            {isGameWon ? (
               <>
                 <h3>You Win!</h3>
                 <p>Well done! 🎉</p>
@@ -87,7 +87,11 @@ export default function Hangman() {
                 <h3>Game Over!</h3>
                 <p>You lose! Better start learning Assembly 😭</p>
               </>
-            ) : (
+            ) : isLastGuessIncorrect ? (
+              <>
+                {getFarewellText(languages[wrongGuessCount - 1].name)}
+              </>
+            ): (
               null
             )}
       </section>
