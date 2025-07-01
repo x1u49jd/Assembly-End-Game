@@ -1,15 +1,15 @@
 import React from "react"
 import { languages } from "./languages"
-import { getFarewellText } from "./utils"
+import { getFarewellText, getRandomWord  } from "./utils"
 
 export default function Hangman() {
   // State values
-  const [currentWord, setCurrentWord] = React.useState("react");
+  const [currentWord, setCurrentWord] = React.useState(function(){return getRandomWord()});
   const [guessedLetters, setGuessedLetters] = React.useState([]);
     
   // Derived values
   const wrongGuessCount = guessedLetters.filter(function(letter){return !currentWord.includes(letter)}).length;
-  const isGameWon = currentWord.split("").every(function(letter){return guessedLetters.includes(letter)})
+  const isGameWon = currentWord.split("").every(function(letter){return guessedLetters.includes(letter)});
   const isGameLost = wrongGuessCount >= languages.length - 1 ? true : false;
   const isGameOver = isGameWon || isGameLost
 
