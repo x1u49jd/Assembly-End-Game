@@ -29,7 +29,7 @@ export default function Hangman() {
   
   // Displays already guessed letters of the word; blanks out the rest
   const letterElements = currentWord.split("").map(function(letter, index) {
-    return <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : ""}</span> 
+    return <span key={index}>{guessedLetters.includes(letter) ? letter.toUpperCase() : isGameOver ? letter.toUpperCase() : ""}</span> 
   })
 
   // Displays the language list
